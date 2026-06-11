@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BOMOKO RDC - Adhésion</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+    <style>
+    body {
+        background-image: url("{% static 'images/bomoko_logo.png' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .logo {
+        display: block;
+        margin: 0 auto 20px;
+        max-width: 220px;
+        height: auto;
+    }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="container">
+
+           <img id="bomoko-logo" src="{% static 'images/bomoko_logo.png' %}"
+               class="logo" alt="BOMOKO logo">
+
+        <script>
+        (function(){
+            var img = document.getElementById('bomoko-logo');
+            if (!img) return;
+            img.addEventListener('error', function(){
+                img.src = "{% static 'images/bomoko_logo.jpg' %}";
+                document.body.style.backgroundImage = "url('{% static 'images/bomoko_logo.jpg' %}')";
+            });
+        })();
+        </script>
+
+
+        <h1>FORMULAIRE D'ADHÉSION</h1>
+
+        <p class="intro">
+          BOMOKO RDC est une Organisation engagée pour l'éveil , le progrès et le Développement Communautaire en République Démocratique du Congo
+
+         <p>Slogan : L’unité au service du développement</p>
+
+         <p>Devise : union - solidarité - développement </p>
+         <p><strong>OBJECTIF GÉNÉRAL</strong></p>
+
+         <p>Promouvoir l’unité et la participation active des jeunes dans le développement social, économique et communautaire de la RDC</p>
+
+         <p><strong>Vision</strong></p>
+
+<p>Contribuer à la consolidation des différentes ethnies de la République Démocratique du Congo, promouvoir l’autonomie financière ainsi que le progrès social en vue du développement communautaire.</p>
+
+         <p><strong>Mission</strong></p>
+
+         <p>Rassembler les jeunes autour des valeurs d’unité, d’entraide et d’engagement citoyen pour un développement communautaire durable.</p>
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="section">
+
+                <h2>I. IDENTIFICATION DU MEMBRE</h2>
+
+                <div class="row">
+
+                    <div class="col">
+                        <label>Nom</label>
+                        {{ form.nom }}
+                    </div>
+
+                    <div class="col">
+                        <label>Post-Nom</label>
+                        {{ form.post_nom }}
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <label>Prénom</label>
+                        {{ form.prenom }}
+                    </div>
+
+                    <div class="col">
+                        <label>Sexe</label>
+                        {{ form.sexe }}
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <label>Lieu de naissance</label>
+                        {{ form.lieu_naissance }}
+                    </div>
+
+                    <div class="col">
+                        <label>Date de naissance</label>
+                        {{ form.date_naissance }}
+                    </div>
+
+                </div>
+
+                <label>Adresse</label>
+                {{ form.adresse }}
+
+                <div class="row">
+
+                    <div class="col">
+                        <label>Téléphone</label>
+                        {{ form.telephone }}
+                    </div>
+
+                    <div class="col">
+                        <label>Email</label>
+                        {{ form.email }}
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <label>Profession</label>
+                        {{ form.profession }}
+                    </div>
+
+                    <div class="col">
+                        <label>Niveau d'étude</label>
+                        {{ form.niveau_etude }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>II. MOTIVATION D'ADHÉSION</h2>
+
+                <label>
+                    Pourquoi souhaitez-vous rejoindre BOMOKO RDC ?
+                </label>
+
+                {{ form.motivation }}
+
+            </div>
+
+            <div class="section">
+
+                <h2>III. ENGAGEMENT DU MEMBRE</h2>
+
+                <div class="checkbox">
+                    {{ form.adhesion_gratuite }}
+                    L'adhésion à la structure est gratuite.
+                </div>
+
+                <div class="checkbox">
+                    {{ form.aucun_salaire }}
+                    Aucun membre ne reçoit automatiquement un salaire.
+                </div>
+
+                <div class="checkbox">
+                    {{ form.contribution }}
+                    Contribution de 2,5 USD pour les actions communautaires.
+                </div>
+
+                <div class="checkbox">
+                    {{ form.respect_valeurs }}
+                    Respect des valeurs et de la discipline interne.
+                </div>
+
+                <div class="checkbox">
+                    {{ form.developpement_communautaire }}
+                    Contribution positive au développement communautaire.
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <h2>IV. AVANTAGES ET OPPORTUNITÉS</h2>
+
+                <ul>
+
+                    <li>Renforcement des capacités</li>
+
+                    <li>Participation aux projets communautaires</li>
+
+                    <li>Développement du réseau professionnel</li>
+
+                    <li>Valorisation du bénévolat</li>
+
+                    <li>Participation aux formations</li>
+
+                    <li>Possibilités de responsabilités</li>
+
+                </ul>
+
+            </div>
+
+            <div class="section">
+
+                <h2>VI. DÉCLARATION FINALE</h2>
+
+                <div class="checkbox">
+
+                    {{ form.declaration_finale }}
+
+                    Je certifie que les informations fournies sont exactes.
+
+                </div>
+
+            </div>
+
+            <button type="submit">
+                SOUMETTRE MA CANDIDATURE
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
